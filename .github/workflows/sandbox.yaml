@@ -1,0 +1,11 @@
+name: Sandbox
+
+on:
+  push
+
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print github.ref
+        run: echo ${{ github.ref }}
