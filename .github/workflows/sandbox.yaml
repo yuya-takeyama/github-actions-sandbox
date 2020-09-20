@@ -9,3 +9,7 @@ jobs:
     steps:
       - name: Print github.ref
         run: echo ${{ github.ref }}
+      - id: docker-tag
+        uses: yuya-takeyama/docker-tag-from-github-ref-action@initial
+      - name: Print Docker tag
+        run: 'echo ${{ steps.docker-tag.outputs.tag }}'
