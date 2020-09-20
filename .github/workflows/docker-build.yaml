@@ -26,7 +26,7 @@ jobs:
       - id: docker-tag
         uses: yuya-takeyama/docker-tag-from-github-ref-action@v1
       - id: docker-tags
-        uses: yuya-takeyama/replicate-docker-version-tag-action@initial
+        uses: yuya-takeyama/replicate-docker-version-tag-action@v1
         with:
           image: ghcr.io/yuya-takeyama/github-actions-sandbox
           tag: ${{ steps.docker-tag.outputs.tag }}
