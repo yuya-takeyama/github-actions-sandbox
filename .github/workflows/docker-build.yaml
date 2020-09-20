@@ -1,4 +1,4 @@
-name: Sandbox
+name: docker build
 
 on:
   push:
@@ -39,6 +39,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ steps.docker-tags.outputs.tags }}
+          tags: "${{ steps.docker-tags.outputs.tags }}"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
