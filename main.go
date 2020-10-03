@@ -13,4 +13,5 @@ func main() {
 	pp.Println("github-actions-sandbox")
 	fmt.Printf("gitCommit: %s\n", gitCommit)
 	fmt.Printf("version:   %s\n", version)
+	fmt.Println("Test")
 }
