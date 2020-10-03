@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/k0kubun/pp"
 
 func main() {
-	fmt.Println("github-actions-sandbox")
+	pp.Println("github-actions-sandbox")
 }
