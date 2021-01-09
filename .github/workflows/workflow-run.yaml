@@ -1,0 +1,17 @@
+name: workflow run
+
+on:
+  workflow_run:
+    workflows:
+      - release
+      - docker build
+      - Sandbox
+
+jobs:
+  workflow-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v3
+        with:
+          script: |
+            console.log(context);
