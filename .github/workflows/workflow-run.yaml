@@ -2,8 +2,8 @@ name: workflow run
 
 on:
   workflow_run:
-    workflows:
-      - '*'
+    workflows-ignore:
+      - Sandbox
     types:
       - completed
 
