@@ -6,6 +6,8 @@ on:
       - release
       - docker build
       - Sandbox
+    types:
+      - completed
 
 jobs:
   workflow-run:
