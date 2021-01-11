@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@initial-implementation
         with:
-          datadog-api-key: test-api-key
+          datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
