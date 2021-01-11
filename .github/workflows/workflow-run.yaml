@@ -3,9 +3,7 @@ name: workflow run
 on:
   workflow_run:
     workflows:
-      - release
-      - docker build
-      - Sandbox
+      - '*'
     types:
       - completed
 
