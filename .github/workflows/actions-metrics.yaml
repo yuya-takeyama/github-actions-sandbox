@@ -14,4 +14,4 @@ jobs:
           github-token: ${{ secrets.USER_GITHUB_TOKEN_WITH_USER_SCOPE }}
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
           enable-workflow-metrics: 'true'
-          enable-owner-metrics: 'true'
+          enable-billing-metrics: 'true'
