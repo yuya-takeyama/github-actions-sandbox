@@ -1,0 +1,17 @@
+on:
+  workflow_run:
+    workflows:
+      - '**'
+    types:
+      - completed
+
+jobs:
+  actions-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@organization-metrics
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
+          enable-workflow-metrics: 'true'
+          enable-owner-metrics: 'true'
