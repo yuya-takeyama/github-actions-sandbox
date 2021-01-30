@@ -9,7 +9,7 @@ jobs:
   actions-metrics:
     runs-on: ubuntu-latest
     steps:
-      - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@organization-metrics
+      - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@fix-set-failed
         with:
           github-token: ${{ secrets.USER_GITHUB_TOKEN_WITH_USER_SCOPE }}
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
