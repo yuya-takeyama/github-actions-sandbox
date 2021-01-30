@@ -1,17 +1,15 @@
+name: actions-billing-metrics
+
 on:
-  workflow_run:
-    workflows:
-      - '**'
-    types:
-      - completed
+  schedule:
+    - cron: '*/10 * * * *'
 
 jobs:
-  actions-metrics:
+  actions-billing-metrics:
     runs-on: ubuntu-latest
     steps:
       - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@make-it-work-with-cron-trigger
         with:
           github-token: ${{ secrets.USER_GITHUB_TOKEN_WITH_USER_SCOPE }}
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
-          enable-workflow-metrics: 'true'
           enable-billing-metrics: 'true'
