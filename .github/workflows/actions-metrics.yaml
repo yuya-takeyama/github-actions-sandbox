@@ -9,7 +9,7 @@ jobs:
   actions-metrics:
     runs-on: ubuntu-latest
     steps:
-      - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@make-it-work-with-cron-trigger
+      - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@v0.3.0
         with:
           github-token: ${{ secrets.USER_GITHUB_TOKEN_WITH_USER_SCOPE }}
           datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
