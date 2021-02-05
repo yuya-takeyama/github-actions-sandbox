@@ -1,0 +1,12 @@
+on:
+  repository_dispatch:
+    types: [foo, bar]
+
+jobs:
+  webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v3
+        with:
+          script: |
+            console.log(JSON.stringify(context));
