@@ -8,6 +8,8 @@ on:
 jobs:
   actions-metrics:
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: 'true'
     steps:
       - uses: yuya-takeyama/github-actions-metrics-to-datadog-action@repository-workflows-metrics
         with:
