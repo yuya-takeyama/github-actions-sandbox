@@ -1,0 +1,19 @@
+name: workflow-run
+
+on:
+  workflow_run:
+    workflows:
+      - '**'
+    branches-ignore:
+      - main
+    types:
+      - started
+
+jobs:
+  auto-cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v3
+        with:
+          script: |
+            console.log(JSON.stringify(context, null, 2));
