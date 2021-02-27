@@ -1,3 +1,5 @@
+name: webhook
+
 on:
   repository_dispatch:
     types: [foo, bar]
