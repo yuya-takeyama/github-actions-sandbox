@@ -19,4 +19,4 @@ jobs:
             console.log(JSON.stringify(context, null, 2));
       - uses: yuya-takeyama/auto-cancel-redundant-workflow-runs-action@main
         with:
-          github-token: ${{ secrets.REPO_GITHUB_TOKEN }}
+          github-token: ${{ secrets.USER_GITHUB_TOKEN_WITH_USER_SCOPE }}
