@@ -4,8 +4,8 @@ on:
   workflow_run:
     workflows:
       - '**'
-#    branches-ignore:
-#      - main
+    branches-ignore:
+      - main
     types:
       - requested
 
