@@ -40,4 +40,4 @@ jobs:
           gcloud secrets versions access "latest" --secret "my-secret" --project jp-yuyat-gha-wif-test
 
           echo "Running gsutil"
-          gsutil ls --project jp-yuyat-gha-wif-test
+          gsutil ls -p jp-yuyat-gha-wif-test
