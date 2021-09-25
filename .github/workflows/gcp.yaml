@@ -28,8 +28,11 @@ jobs:
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
+          echo "Running gcloud auth"
           gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
 
+          echo "Running gcloud secrets"
           gcloud secrets versions access "latest" --secret "my-secret"
 
+          echo "Running gsutil"
           gsutil ls
