@@ -1,3 +1,5 @@
+name: gcp
+
 on:
   push
 
@@ -20,6 +22,8 @@ jobs:
           create_credentials_file: 'true'
           workload_identity_provider: 'projects/539044110029/locations/global/workloadIdentityPools/github-actions/providers/github-actions'
           service_account: 'github-actions@jp-yuyat-gha-wif-test.iam.gserviceaccount.com'
+
+      - run: cat $GOOGLE_APPLICATION_CREDENTIALS
 
       - id: 'gcloud'
         name: 'gcloud'
