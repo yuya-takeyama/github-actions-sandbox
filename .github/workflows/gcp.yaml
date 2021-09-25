@@ -12,7 +12,7 @@ jobs:
       # Install gcloud, do not specify authentication.
       - uses: 'google-github-actions/setup-gcloud@master'
         with:
-          project_id: 'my-project'
+          project_id: jp-yuyat-gha-wif-test
 
       # Configure Workload Identity Federation via a credentials file.
       - id: 'auth'
@@ -33,11 +33,8 @@ jobs:
           gcloud auth list
           gcloud info
 
-          echo "Running gcloud services"
-          gcloud services enable secretmanager.googleapis.com --project jp-yuyat-gha-wif-test
-
           echo "Running gcloud secrets"
-          gcloud secrets versions access "latest" --secret "my-secret" --project jp-yuyat-gha-wif-test
+          gcloud secrets versions access "latest" --secret "my-secret"
 
           echo "Running gsutil"
           gsutil ls -p jp-yuyat-gha-wif-test
