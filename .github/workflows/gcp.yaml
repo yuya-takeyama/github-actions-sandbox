@@ -34,10 +34,10 @@ jobs:
           gcloud info
 
           echo "Running gcloud services"
-          gcloud services enable secretmanager.googleapis.com
+          gcloud services enable secretmanager.googleapis.com --project jp-yuyat-gha-wif-test
 
           echo "Running gcloud secrets"
-          gcloud secrets versions access "latest" --secret "my-secret"
+          gcloud secrets versions access "latest" --secret "my-secret" --project jp-yuyat-gha-wif-test
 
           echo "Running gsutil"
-          gsutil ls
+          gsutil ls --project jp-yuyat-gha-wif-test
