@@ -35,6 +35,3 @@ jobs:
 
           echo "Running gcloud secrets"
           gcloud secrets versions access "latest" --secret "my-secret"
-
-          echo "Running gsutil"
-          gsutil ls -p jp-yuyat-gha-wif-test
