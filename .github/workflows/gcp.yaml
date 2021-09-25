@@ -30,6 +30,8 @@ jobs:
         run: |-
           echo "Running gcloud auth"
           gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+          gcloud auth list
+          gcloud info
 
           echo "Running gcloud services"
           gcloud services enable secretmanager.googleapis.com
