@@ -1,0 +1,29 @@
+on:
+  push
+
+jobs:
+  gcp:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: 'write'
+    steps:
+      # Install gcloud, do not specify authentication.
+      - uses: 'google-github-actions/setup-gcloud@master'
+        with:
+          project_id: 'my-project'
+
+      # Configure Workload Identity Federation via a credentials file.
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0.3.0'
+        with:
+          create_credentials_file: 'true'
+          workload_identity_provider: 'projects/539044110029/locations/global/workloadIdentityPools/github-actions/providers/github-actions'
+          service_account: 'github-actions@jp-yuyat-gha-wif-test.iam.gserviceaccount.com'
+
+      - id: 'gcloud'
+        name: 'gcloud'
+        run: |-
+          gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+
+          gsutil ls
