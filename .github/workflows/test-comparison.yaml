@@ -14,11 +14,3 @@ jobs:
       - name: '1 < 0'
         if: ${{ 1 < 0 }}
         run: echo "Run"
-
-      - name: '"1" > "0"'
-        if: ${{ "1" > "0" }}
-        run: echo "Run"
-
-      - name: '"hoge" > 0'
-        if: ${{ "hoge" > 0 }}
-        run: echo "Run"
