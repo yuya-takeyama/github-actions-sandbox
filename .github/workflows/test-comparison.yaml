@@ -5,7 +5,7 @@ on:
 
 jobs:
   comparison:
-    on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: '1 > 0'
         if: ${{ 1 > 0 }}
