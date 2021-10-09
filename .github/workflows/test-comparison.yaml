@@ -15,14 +15,6 @@ jobs:
         if: ${{ 1 < 0 }}
         run: echo "Run"
 
-      - name: '"1" > 0'
-        if: ${{ "1" > 0 }}
-        run: echo "Run"
-
-      - name: '"1" < 0'
-        if: ${{ "1" < 0 }}
-        run: echo "Run"
-
       - name: '"1" > "0"'
         if: ${{ "1" > "0" }}
         run: echo "Run"
