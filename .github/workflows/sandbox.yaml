@@ -1,8 +1,15 @@
 name: sandbox
 
 on:
-  - push
-  - pull_request
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level\nfoo'
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags' 
 
 jobs:
   sandbox:
