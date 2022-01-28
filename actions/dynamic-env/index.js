@@ -15,7 +15,7 @@ const envMaps = {
 const envFile = process.env.GITHUB_ENV;
 const envMap = envMaps[core.getInput('envName', { required: true })];
 
-for (const kv = Object.entries(envMap)) {
+for (const kv of Object.entries(envMap)) {
   const envName = kv[0];
   const secretName = kv[1];
 
