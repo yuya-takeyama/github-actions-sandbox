@@ -19,6 +19,6 @@ for (const kv of Object.entries(envMap)) {
   const envName = kv[0];
   const secretName = kv[1];
 
-  core.info(`Exporting a secret `${secretName}` as an environment variable ${envName}`);
+  core.info(`Exporting a secret ${secretName} as an environment variable ${envName}`);
   core.exportVariable(envName, secrets[secretName]);
 }
