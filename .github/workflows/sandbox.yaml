@@ -18,3 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ toJSON(secrets) }}"
+      - uses: actions/github-script@v5
+        id: set-result
+        with:
+          script: |
+            console.log(JSON.stringify(context));
