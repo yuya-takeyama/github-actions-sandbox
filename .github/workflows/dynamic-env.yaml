@@ -1,0 +1,22 @@
+name: dynamic-env
+
+on: push
+
+jobs:
+  dynamic-env:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        envName:
+          - foo
+          - bar
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./actions/dynamic-env
+        with:
+          envName: ${{ matrix.envName }}
+      - uses: actions/github-script@v5
+        with:
+          script: |
+            console.log(`ENV_1: ${process.env.ENV_1.split('').join(' ')}`);
+            console.log(`ENV_2: ${process.env.ENV_1.split('').join(' ')}`);

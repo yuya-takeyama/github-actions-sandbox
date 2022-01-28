@@ -1,0 +1,11 @@
+name: dynamic-env
+description: 'Dynamically load environment variables from secrets'
+inputs:
+  secrets:
+    default: ${{ toJSON(secrets) }}
+  envName:
+    description: 'GitHub API token'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
