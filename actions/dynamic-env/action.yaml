@@ -2,7 +2,8 @@ name: dynamic-env
 description: 'Dynamically load environment variables from secrets'
 inputs:
   secrets:
-    default: ${{ toJSON(secrets) }}
+    description: 'JSON encoded secrets'
+    required: true
   envName:
     description: 'GitHub API token'
     required: true
