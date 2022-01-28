@@ -20,4 +20,4 @@ jobs:
         with:
           script: |
             console.log(`ENV_1: ${process.env.ENV_1.split('').join(' ')}`);
-            console.log(`ENV_2: ${process.env.ENV_1.split('').join(' ')}`);
+            console.log(`ENV_2: ${(process.env.ENV_2 || '').split('').join(' ')}`);
