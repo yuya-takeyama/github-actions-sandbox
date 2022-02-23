@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ toJSON(secrets) }}"
+      - run: echo "${{ toJSON(github.event_name) }}"
+      - run: echo "${{ toJSON(github.event_name == 'push') }}"
       - uses: actions/github-script@v5
         id: set-result
         with:
