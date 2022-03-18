@@ -13,8 +13,8 @@ jobs:
         id: files
         with:
           route: GET /repos/{owner}/{repo}/pulls/{pull_number}/files
-          owner: ${{ github.event.repository.owner.name }}
-          repo: ${{ github.event.repository.name }}
+          owner: yuya-takeyama
+          repo: github-actions-sandbox
           pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -23,8 +23,8 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/{owner}/{repo}/issues/{pull_number}/comments
-          owner: ${{ github.event.repository.owner }}
-          repo: ${{ github.event.repository.name }}
+          owner: yuya-takeyama
+          repo: github-actions-sandbox
           pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
           body: |
             This has no changes.
@@ -41,8 +41,8 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/{owner}/{repo}/issues/{pull_number}/comments
-          owner: ${{ github.event.repository.owner }}
-          repo: ${{ github.event.repository.name }}
+          owner: yuya-takeyama
+          repo: github-actions-sandbox
           pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
           body: |
             This has some changes.
