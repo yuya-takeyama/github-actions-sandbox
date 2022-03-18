@@ -22,7 +22,7 @@ jobs:
         id: ok-comment
         uses: octokit/request-action@v2.x
         with:
-          route: /repos/{owner}/{repo}/issues/{pull_number}/comments
+          route: POST /repos/{owner}/{repo}/issues/{pull_number}/comments
           owner: yuya-takeyama
           repo: github-actions-sandbox
           pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
@@ -37,7 +37,7 @@ jobs:
         id: ng-comment
         uses: octokit/request-action@v2.x
         with:
-          route: /repos/{owner}/{repo}/issues/{pull_number}/comments
+          route: POST /repos/{owner}/{repo}/issues/{pull_number}/comments
           owner: yuya-takeyama
           repo: github-actions-sandbox
           pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
