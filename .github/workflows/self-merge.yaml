@@ -18,4 +18,4 @@ jobs:
           pull_number: ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - runs: echo '${{ steps.files.outputs.result }}'
+      - run: echo '${{ steps.files.outputs.result }}'
