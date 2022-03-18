@@ -20,7 +20,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - if: ${{ fromJSON(steps.files.outputs.data).length == 0 }}
         uses: octokit/request-action@v2.x
-        id: files
         with:
           route: /repos/{owner}/{repo}/issues/{pull_number}/comments
           owner: yuya-takeyama
@@ -33,7 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - if: ${{ fromJSON(steps.files.outputs.data).length != 0 }}
         uses: octokit/request-action@v2.x
-        id: files
         with:
           route: /repos/{owner}/{repo}/issues/{pull_number}/comments
           owner: yuya-takeyama
