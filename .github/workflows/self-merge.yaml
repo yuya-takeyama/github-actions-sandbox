@@ -1,0 +1,21 @@
+name: self-merge
+
+on:
+  pull_request:
+
+  issue_comment:
+
+jobs:
+  self-merge:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: octokit/request-action@v2.x
+        id: files
+        with:
+          route: GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+          owner: octokit
+          repo: request-action
+          pull_number: ${{ github.event.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - runs: echo '${{ steps.files.outputs.result }}'
