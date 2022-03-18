@@ -19,7 +19,9 @@ jobs:
           pull_number: ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - if: ${{ fromJSON(steps.files.outputs.data).length == 0 }}
+
+      # Mergeable
+      - if: ${{ steps.files.outputs.data == '[]' }}
         id: ok-comment
         uses: octokit/request-action@v2.x
         with:
@@ -32,13 +34,20 @@ jobs:
             We can merge this.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: "pascalgn/automerge-action@v0.14.3"
+      - if: ${{ steps.files.outputs.data == '[]' }}
+        uses: hmarr/auto-approve-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{ steps.files.outputs.data == '[]' }}
+        uses: "pascalgn/automerge-action@v0.14.3"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MERGE_LABELS: ''
-      - if: ${{ fromJSON(steps.files.outputs.data).length == 0 }}
+      - if: ${{ steps.files.outputs.data == '[]' }}
         run: echo '${{ steps.ok-comment.outputs.data }}'
-      - if: ${{ fromJSON(steps.files.outputs.data).length != 0 }}
+
+      # Not mergeable
+      - if: ${{ steps.files.outputs.data != '[]' }}
         id: ng-comment
         uses: octokit/request-action@v2.x
         with:
@@ -51,5 +60,5 @@ jobs:
             We cannot merge this.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - if: ${{ fromJSON(steps.files.outputs.data).length != 0 }}
+      - if: ${{ steps.files.outputs.data != '[]' }}
         run: echo '${{ steps.ng-comment.outputs.data }}'
