@@ -1,0 +1,54 @@
+name: self-merge
+
+on:
+  pull_request:
+
+  issue_comment:
+
+jobs:
+  self-merge:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: octokit/request-action@v2.x
+        id: files
+        with:
+          route: GET /repos/{owner}/{repo}/pulls/{pull_number}/files
+          owner: yuya-takeyama
+          repo: github-actions-sandbox
+          pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{ fromJSON(steps.files.outputs.data).length == 0 }}
+        id: ok-comment
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/issues/{pull_number}/comments
+          owner: yuya-takeyama
+          repo: github-actions-sandbox
+          pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          body: |
+            This has no changes.
+            We can merge this.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: "pascalgn/automerge-action@v0.14.3"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_LABELS: ''
+      - if: ${{ fromJSON(steps.files.outputs.data).length == 0 }}
+        run: echo '${{ steps.ok-comment.outputs.data }}'
+      - if: ${{ fromJSON(steps.files.outputs.data).length != 0 }}
+        id: ng-comment
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/{owner}/{repo}/issues/{pull_number}/comments
+          owner: yuya-takeyama
+          repo: github-actions-sandbox
+          pull_number: ${{ github.event.issue.number || github.event.pull_request.number }}
+          body: |
+            This has some changes.
+            We cannot merge this.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: ${{ fromJSON(steps.files.outputs.data).length != 0 }}
+        run: echo '${{ steps.ng-comment.outputs.data }}'
