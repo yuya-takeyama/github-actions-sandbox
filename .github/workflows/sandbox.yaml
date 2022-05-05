@@ -28,10 +28,11 @@ jobs:
         with:
           app_id: ${{ secrets.BOT_GITHUB_APP_ID }}
           private_key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
-      - run: date > date.txt
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: date.txt
-          commit_user_name: 'yuya-takeyama-test-bot[bot]'
-          commit_user_email: '104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com'
-
+      - run: |
+          curl -fL -o /tmp/ghcp.zip https://github.com/int128/ghcp/releases/download/v1.13.0/ghcp_linux_amd64.zip
+          unzip /tmp/ghcp.zip -d ~/bin
+          mkdir -p dates
+          date > dates/date1.txt
+          date > dates/date2.txt
+          date > dates/date3.txt
+          ~/bin/ghcp commit -r yuya-takeyama/github-actions-sandbox -m Update dates
