@@ -21,8 +21,20 @@ jobs:
       - run: echo '${{ toJSON(github.event_name) }}'
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
       - run: echo '${{ toJSON('foo' == 'bar') }}'
+      - id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
       - uses: actions/github-script@v5
         id: set-result
         with:
           script: |
-            console.log(JSON.stringify(context));
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Message from bot!'
+            })
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
