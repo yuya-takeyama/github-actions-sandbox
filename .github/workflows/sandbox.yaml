@@ -28,14 +28,10 @@ jobs:
         with:
           app_id: ${{ secrets.BOT_GITHUB_APP_ID }}
           private_key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
-      - name: Commit files
-        run: |
-          git config --local user.email "104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com"
-          git config --local user.name "yuya-takeyama-test-bot[bot]"
-          date > date.txt
-          git add .
-          git commit -m "Add changes" -a
-      - uses: ad-m/github-push-action@master
+      - run: date > date.txt
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ steps.generate_token.outputs.token }}
-          branch: ${{ github.ref }}
+          file_pattern: date.txt
+          commit_user_name: 'yuya-takeyama-test-bot[bot]'
+          commit_user_email: '104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com'
+          commit_author: 'yuya-takeyama-test-bot[bot] <104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com>'
