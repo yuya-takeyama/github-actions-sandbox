@@ -26,21 +26,13 @@ jobs:
         with:
           app_id: ${{ secrets.BOT_GITHUB_APP_ID }}
           private_key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
-      - uses: actions/github-script@v5
-        id: set-result
+      - name: Commit files
+        run: |
+          git config --local user.email "104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com"
+          git config --local user.name "yuya-takeyama-test-bot[bot]"
+          date > date.txt
+          git commit -m "Add changes" -a
+      - uses: ad-m/github-push-action@master
         with:
-          github-token: ${{ steps.generate_token.outputs.token }}
-          script: |
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 Message from bot!'
-            });
-            await github.request('PUT /repos/{owner}/{repo}/contents/{path}', {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              path: 'test2',
-              message: 'my commit message',
-              content: 'bXkgbmV3IGZpbGUgY29udGVudHM='
-            })
+          github_token: ${{ steps.generate_token.outputs.token }}
+          branch: ${{ github.head_ref }}
