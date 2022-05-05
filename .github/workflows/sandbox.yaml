@@ -29,6 +29,7 @@ jobs:
       - uses: actions/github-script@v5
         id: set-result
         with:
+          github-token: ${{ steps.generate_token.outputs.token }}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -36,5 +37,3 @@ jobs:
               repo: context.repo.repo,
               body: '👋 Message from bot!'
             })
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
