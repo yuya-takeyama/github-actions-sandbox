@@ -17,6 +17,7 @@ jobs:
   sandbox:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - run: echo '${{ toJSON(secrets) }}'
       - run: echo '${{ toJSON(github.event_name) }}'
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
