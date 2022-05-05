@@ -40,7 +40,7 @@ jobs:
             await github.request('PUT /repos/{owner}/{repo}/contents/{path}', {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              path: 'test',
+              path: 'test2',
               message: 'my commit message',
               content: 'bXkgbmV3IGZpbGUgY29udGVudHM='
             })
