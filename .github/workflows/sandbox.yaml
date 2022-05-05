@@ -34,4 +34,4 @@ jobs:
           file_pattern: date.txt
           commit_user_name: 'yuya-takeyama-test-bot[bot]'
           commit_user_email: '104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com'
-          commit_author: 'yuya-takeyama-test-bot[bot] <104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com>'
+
