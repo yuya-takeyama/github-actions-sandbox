@@ -32,6 +32,7 @@ jobs:
           git config --local user.email "104966623+yuya-takeyama-test-bot[bot]@users.noreply.github.com"
           git config --local user.name "yuya-takeyama-test-bot[bot]"
           date > date.txt
+          git add .
           git commit -m "Add changes" -a
       - uses: ad-m/github-push-action@master
         with:
