@@ -35,6 +35,6 @@ jobs:
           date > dates/date1.txt
           date > dates/date2.txt
           date > dates/date3.txt
-          ~/bin/ghcp commit -r yuya-takeyama/github-actions-sandbox -m Update dates
+          ~/bin/ghcp commit -r yuya-takeyama/github-actions-sandbox -m Update dates -b ${{ github.head_ref }}
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
