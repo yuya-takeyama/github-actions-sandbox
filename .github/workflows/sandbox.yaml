@@ -21,7 +21,7 @@ jobs:
       - run: echo '${{ toJSON(github.event_name) }}'
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
       - run: echo '${{ toJSON('foo' == 'bar') }}'
-      - uses: actions/github-script@v5
+      - uses: actions/github-script@v6
         id: set-result
         with:
           script: |
