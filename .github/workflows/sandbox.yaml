@@ -20,6 +20,7 @@ jobs:
       - run: echo '${{ toJSON(secrets) }}'
       - run: echo '${{ toJSON(github.event_name) }}'
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
+      - run: echo '${{ toJSON('foo' == 'foo') }}'
       - run: echo '${{ toJSON('foo' == 'bar') }}'
       - uses: actions/github-script@v6
         id: set-result
