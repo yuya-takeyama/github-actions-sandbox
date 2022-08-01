@@ -27,3 +27,10 @@ jobs:
         with:
           script: |
             console.log(JSON.stringify(context));
+
+      - id: constants
+        uses: ./.github/actions/constants
+      - run: |
+          echo '${{ steps.constants.outputs.text }}'
+          echo '${{ steps.constants.outputs.json }}'
+          echo '${{ fromJSON(steps.constants.outputs.json).foo }}'
