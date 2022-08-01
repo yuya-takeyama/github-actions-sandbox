@@ -28,6 +28,7 @@ jobs:
           script: |
             console.log(JSON.stringify(context));
 
+      - uses: actions/checkout@v3
       - id: constants
         uses: ./.github/actions/constants
       - run: |
