@@ -1,0 +1,18 @@
+name: constants
+
+outputs:
+  text:
+    description: Plain text value
+    value: ${{ steps.const.outputs.text }}
+  json:
+    description: JSON value
+    value: ${{ steps.const.outputs.json }}
+
+runs:
+  using: composite
+  steps:
+    - id: const
+      run: |
+        echo '::set-output name=text::Hello, World!'
+        echo '::set-output name=json::{"foo":"bar","baz":["hoge","fuga","piyo"]}'
+      shell: bash
