@@ -35,3 +35,4 @@ jobs:
           echo '${{ steps.constants.outputs.text }}'
           echo '${{ steps.constants.outputs.json }}'
           echo '${{ fromJSON(steps.constants.outputs.json).foo }}'
+          echo '${{ fromJSON(steps.constants.outputs.json).baz[2] }}'
