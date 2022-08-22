@@ -27,6 +27,10 @@ jobs:
         with:
           script: |
             console.log(JSON.stringify(context));
+      - name: Show head ref
+        run: |
+          echo "github.head_ref=${{ github.head_ref }}"
+          echo "GITHUB_HEAD_REF=$GITHUB_HEAD_REF"
 
       - uses: actions/checkout@v3
       - id: constants
