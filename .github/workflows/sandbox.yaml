@@ -26,6 +26,7 @@ jobs:
       - run: echo '${{ toJSON('foo' == 'foo') }}'
       - run: echo '${{ toJSON('foo' == 'bar') }}'
       - run: echo "$ACTIONS_ID_TOKEN_REQUEST_URL" | base64
+      - run: curl -v "$ACTIONS_ID_TOKEN_REQUEST_URL"
       - uses: actions/github-script@v6
         id: set-result
         with:
