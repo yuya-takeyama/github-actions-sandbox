@@ -15,6 +15,9 @@ on:
 
 jobs:
   sandbox:
+    permissions:
+      id-token: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - run: echo '${{ toJSON(secrets) }}'
@@ -22,6 +25,7 @@ jobs:
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
       - run: echo '${{ toJSON('foo' == 'foo') }}'
       - run: echo '${{ toJSON('foo' == 'bar') }}'
+      - run: echo "$ACTIONS_ID_TOKEN_REQUEST_URL" | base64
       - uses: actions/github-script@v6
         id: set-result
         with:
