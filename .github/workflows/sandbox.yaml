@@ -20,6 +20,9 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
+      - run: echo "$GITHUB_ENV"
+      - run: ls -lah "$GITHUB_ENV"
+      - run: cat "$GITHUB_ENV"
       - run: echo '${{ toJSON(secrets) }}'
       - run: echo '${{ toJSON(github.event_name) }}'
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
