@@ -31,7 +31,7 @@ jobs:
           image: ghcr.io/yuya-takeyama/github-actions-sandbox
           tag: ${{ steps.docker-tag.outputs.tag }}
       - name: Build and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           push: true
           tags: ${{ steps.docker-tags.outputs.tags }}
