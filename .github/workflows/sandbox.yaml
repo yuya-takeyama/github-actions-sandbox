@@ -30,9 +30,9 @@ jobs:
         run: |
           jwt="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
           echo "Header:"
-          echo "$(echo $jwt | awk -F . '{ print $1 }' | base64 -D)"
+          echo "$(echo $jwt | awk -F . '{ print $1 }' | base64 -d)"
           echo "Body:"
-          echo "$(echo $jwt | awk -F . '{ print $1 }' | base64 -D)"
+          echo "$(echo $jwt | awk -F . '{ print $1 }' | base64 -d)"
       - uses: actions/github-script@v6
         id: set-result
         with:
