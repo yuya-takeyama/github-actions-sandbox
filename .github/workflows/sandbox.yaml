@@ -26,6 +26,13 @@ jobs:
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
       - run: echo '${{ toJSON('foo' == 'foo') }}'
       - run: echo '${{ toJSON('foo' == 'bar') }}'
+      - name: JWT
+        run: |
+          jwt="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+          echo "Header:"
+          echo "$(echo $jwt | awk -F . '{ print $1 }' | base64 -D)"
+          echo "Body:"
+          echo "$(echo $jwt | awk -F . '{ print $1 }' | base64 -D)"
       - uses: actions/github-script@v6
         id: set-result
         with:
