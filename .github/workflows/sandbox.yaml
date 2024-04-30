@@ -33,6 +33,11 @@ jobs:
           echo "$(echo $jwt | awk -F . '{ print $1 }' | base64 -d)"
           echo "Body:"
           echo "$(echo $jwt | awk -F . '{ print $2 }' | base64 -d)"
+      - run: |
+          for i in $(seq 10); do
+            echo "$i"
+            sleep 1
+          done
       - uses: actions/github-script@v6
         id: set-result
         with:
