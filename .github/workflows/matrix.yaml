@@ -7,10 +7,13 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ {"config":[]} }}
+      matrix: ${{ steps.set-result.outputs.result }}
     steps:
-      - run: |
-          echo "Hi!"
+      - uses: actions/github-script@v7
+        id: set-result
+        with:
+          script: |
+            return {config: []}
 
   run:
     needs: setup
