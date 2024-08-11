@@ -1,0 +1,17 @@
+name: changed-files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  changed-files:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - run: |
+          echo "$CONTEXT"
+        env:
+          CONTEXT: ${{ toJSON(github) }}
