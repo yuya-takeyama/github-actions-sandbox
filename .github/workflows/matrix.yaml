@@ -1,0 +1,23 @@
+name: matrix
+
+on:
+  push
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ {"config":[]} }}
+
+  run:
+    needs: setup
+    # if: ${{ fromJSON(needs.setup.outputs.matrix).config != '[]' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
+    steps:
+      - run: echo "Hello!"
