@@ -2,8 +2,6 @@ name: changed-files
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   changed-files:
@@ -15,3 +13,9 @@ jobs:
           echo "$CONTEXT"
         env:
           CONTEXT: ${{ toJSON(github) }}
+      - if: ${{ github.event_name == 'push' }}
+        run: |
+          git diff --name-only "$BEFORE" "$AFTER"
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.after }}
