@@ -13,8 +13,8 @@ jobs:
         id: set-result
         with:
           script: |
-            // return {config: [{foo: "FOO"}]};
-            return {config: []};
+            return {config: [{foo: "FOO"}]};
+            //return {config: []};
 
   run:
     needs: setup
@@ -28,6 +28,14 @@ jobs:
       matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
     steps:
       - run: |
+          echo "needs.setup.outputs.matrix"
+          echo "${{ needs.setup.outputs.matrix }}"
+          echo "needs.setup.outputs.matrix.config"
+          echo "${{ needs.setup.outputs.matrix.config }}"
+          echo "toJSON(needs.setup.outputs.matrix)"
+          echo "${{ toJSON(needs.setup.outputs.matrix) }}"
+          echo "toJSON(needs.setup.outputs.matrix.config)"
+          echo "${{ toJSON(needs.setup.outputs.matrix.config) }}"
           echo "Hello, ${FOO}"
           echo "Hello, ${FOO_JSON}"
         env:
