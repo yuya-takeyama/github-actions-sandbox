@@ -1,7 +1,10 @@
 name: changed-files
 
 on:
+  pull_request:
   push:
+    branches:
+      - main
 
 jobs:
   changed-files:
