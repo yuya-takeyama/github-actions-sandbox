@@ -19,6 +19,10 @@ jobs:
           echo "$CONTEXT"
         env:
           CONTEXT: ${{ toJSON(github) }}
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            console.log(JSON.stringify(context, null, 2));
       - if: ${{ github.event_name == 'push' }}
         run: |
           git diff --name-only "$BEFORE" "$AFTER"
