@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ {"config":[]} }}
+    steps:
+      - run: |
+          echo "Hi!"
 
   run:
     needs: setup
@@ -20,4 +23,5 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
     steps:
-      - run: echo "Hello!"
+      - run: |
+          echo "Hello!"
