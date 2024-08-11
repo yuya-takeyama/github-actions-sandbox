@@ -30,5 +30,5 @@ jobs:
           echo "Hello, ${FOO}"
           echo "Hello, ${FOO_JSON}"
         env:
-          FOO: ${{ fromJSON(matrix.config).foo }}
-          FOO_JSON: ${{ toJSON(fromJSON(matrix.config).foo) }}
+          FOO: ${{ matrix.config.foo }}
+          FOO_JSON: ${{ toJSON(matrix.config.foo) }}
