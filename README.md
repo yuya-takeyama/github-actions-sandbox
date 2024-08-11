@@ -2,3 +2,4 @@
 
 Test
 foo
+bar
