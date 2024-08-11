@@ -18,7 +18,7 @@ jobs:
 
   run:
     needs: setup
-    if: ${{ toJSON(fromJSON(needs.setup.outputs.matrix).config) != '[]' }}
+    if: ${{ toJSON(needs.setup.outputs.matrix.config) != '[]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
