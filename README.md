@@ -3,3 +3,4 @@
 Test
 foo
 bar
+baz
