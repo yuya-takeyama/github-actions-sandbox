@@ -3,7 +3,7 @@ name: workflow-run
 on:
   workflow_run:
     workflows:
-      - '**'
+      - 'dont-run-this'
     branches-ignore:
       - main
     types:
