@@ -10,7 +10,7 @@ jobs:
       matrix:
         config:
           - { foo: 'FOO', bar: 'BAR' }
-    sptes:
+    steps:
       - run: |
           echo "${{ toJSON(matrix) }}"
           echo "${{ toJSON(matrix.config) }}"
