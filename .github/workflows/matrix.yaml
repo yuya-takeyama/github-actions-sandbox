@@ -1,0 +1,17 @@
+name: matrix
+
+on:
+  push
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        config:
+          - { foo: 'FOO', bar: 'BAR' }
+    sptes:
+      - run: |
+          echo "${{ toJSON(matrix) }}"
+          echo "${{ toJSON(matrix.config) }}"
+          echo "${{ toJSON(matrix.config.foo) }}"
