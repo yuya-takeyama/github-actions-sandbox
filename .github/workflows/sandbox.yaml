@@ -20,6 +20,7 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
+      # Update
       - run: echo '${{ toJSON(github) }}'
       - run: echo 'github.actor = ${{ github.actor	}}'
       - run: echo '${{ toJSON(secrets) }}'
