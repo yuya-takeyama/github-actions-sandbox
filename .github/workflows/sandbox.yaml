@@ -22,6 +22,9 @@ jobs:
     steps:
       - run: echo '${{ toJSON(github) }}'
       - run: echo 'github.actor = ${{ github.actor	}}'
+      - run: echo "$JSON"
+        env:
+          JSON: ${{ toJSON(["foo", "bar", "baz"]) }}
       - run: echo '${{ toJSON(secrets) }}'
       - run: echo '${{ toJSON(github.event_name) }}'
       - run: echo '${{ toJSON(github.event_name == 'push') }}'
