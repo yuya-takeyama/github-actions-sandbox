@@ -58,8 +58,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        job-param: ${{ fromJSON('[{"foo":"FOO","BAR":null}]') }}
+        job-param: ${{ fromJSON('[{"foo":"FOO","BAR":{},"BAZ":""}]') }}
     steps:
+      - run: |
+          echo "$MATRIX"
+        env:
+          MATRIX: ${{ toJSON(matrix) }}
       - run: |
           echo "FOO=$FOO"
         if: ${{ matrix.job-param.foo }}
