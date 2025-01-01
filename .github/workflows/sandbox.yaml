@@ -72,6 +72,6 @@ jobs:
           BAR: ${{ matrix.job-param.bar }}
       - run: |
           echo "BAZ=$BAZ"
-        if: ${{ $matrix.job-param.baz }}
+        if: ${{ matrix.job-param.baz }}
         env:
           BAZ: ${{ matrix.job-param.baz }}
