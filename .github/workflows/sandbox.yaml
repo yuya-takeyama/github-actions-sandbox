@@ -65,17 +65,11 @@ jobs:
         env:
           MATRIX: ${{ toJSON(matrix) }}
       - run: |
-          echo "FOO=$FOO"
+          echo "Non-empty string is truthy"
         if: ${{ matrix.job-param.foo }}
-        env:
-          FOO: ${{ matrix.job-param.foo }}
       - run: |
-          echo "BAR=$BAR"
+          echo "Empty object is truthy"
         if: ${{ matrix.job-param.bar }}
-        env:
-          BAR: ${{ matrix.job-param.bar }}
       - run: |
-          echo "BAZ=$BAZ"
+          echo "Empty string is truthy"
         if: ${{ matrix.job-param.baz }}
-        env:
-          BAZ: ${{ matrix.job-param.baz }}
