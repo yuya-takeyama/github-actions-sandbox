@@ -60,15 +60,18 @@ jobs:
       matrix:
         job-param: ${{ fromJSON('[{"foo":"FOO","BAR":null}]') }}
     steps:
-      - run: echo "FOO=$FOO"
-        if: ${{ $matrix.job-param.foo }}
+      - run: |
+          echo "FOO=$FOO"
+        if: ${{ matrix.job-param.foo }}
         env:
-          FOO: $matrix.job-param.foo
-      - run: echo "BAR=$BAR"
-        if: ${{ $matrix.job-param.bar }}
+          FOO: ${{ matrix.job-param.foo }}
+      - run: |
+          echo "BAR=$BAR"
+        if: ${{ matrix.job-param.bar }}
         env:
-          BAR: $matrix.job-param.bar
-      - run: echo "BAZ=$BAZ"
+          BAR: ${{ matrix.job-param.bar }}
+      - run: |
+          echo "BAZ=$BAZ"
         if: ${{ $matrix.job-param.baz }}
         env:
-          BAZ: $matrix.job-param.baz
+          BAZ: ${{ matrix.job-param.baz }}
