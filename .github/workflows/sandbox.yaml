@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        job-param: ${{ fromJSON('[{"foo":"FOO","BAR":{},"BAZ":""}]') }}
+        job-param: ${{ fromJSON('[{"foo":"FOO","bar":{},"baz":""}]') }}
     steps:
       - run: |
           echo "$MATRIX"
