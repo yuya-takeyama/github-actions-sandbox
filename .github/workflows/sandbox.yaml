@@ -43,7 +43,7 @@ jobs:
             echo "$i"
             sleep 1
           done
-      - uses: actions/github-script@v6
+      - uses: actions/github-script@v7
         id: set-result
         with:
           script: |
