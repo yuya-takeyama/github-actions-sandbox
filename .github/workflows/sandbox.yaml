@@ -21,6 +21,7 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
+      # Update
       - run: echo '${{ toJSON(github) }}'
       - run: echo "$STR"
         env:
