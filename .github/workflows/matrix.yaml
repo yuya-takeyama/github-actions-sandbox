@@ -1,0 +1,34 @@
+name: matrix
+
+on:
+  push
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-result.outputs.result }}
+    steps:
+      - uses: actions/github-script@v7
+        id: set-result
+        with:
+          script: |
+            return {config: [{foo: "FOO"}, {foo: "BAR"}]};
+
+  run:
+    needs: setup
+    if: ${{ toJSON(fromJSON(needs.setup.outputs.matrix).config) != '[]' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
+    steps:
+      - run: |
+          echo "Hello, ${FOO}"
+          echo "Hello, ${FOO_JSON}"
+        env:
+          FOO: ${{ matrix.config.foo }}
+          FOO_JSON: ${{ toJSON(matrix.config.foo) }}
